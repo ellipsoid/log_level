@@ -1,15 +1,15 @@
 package log_level_test
 
 import (
-	"code42.com/level_log"
+	"github.com/ellipsoid/log_level"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("LevelLogger", func() {
+var _ = Describe("Logger", func() {
 	var (
-		logger  level_log.Logger
-		level   level_log.Level
+		logger  log_level.Logger
+		level   log_level.Level
 		printer *MockPrinter
 	)
 
@@ -18,12 +18,12 @@ var _ = Describe("LevelLogger", func() {
 	})
 
 	JustBeforeEach(func() {
-		logger = level_log.New(level, printer)
+		logger = log_level.New(level, printer)
 	})
 
 	Context("With TRACE Log Level", func() {
 		BeforeEach(func() {
-			level = level_log.TRACE
+			level = log_level.TRACE
 		})
 
 		It("Logs Trace Calls", func() {
@@ -54,7 +54,7 @@ var _ = Describe("LevelLogger", func() {
 
 	Context("With DEBUG Log Level", func() {
 		BeforeEach(func() {
-			level = level_log.DEBUG
+			level = log_level.DEBUG
 		})
 
 		It("Does Not Log Trace Calls", func() {
@@ -85,7 +85,7 @@ var _ = Describe("LevelLogger", func() {
 
 	Context("With INFO Log Level", func() {
 		BeforeEach(func() {
-			level = level_log.INFO
+			level = log_level.INFO
 		})
 
 		It("Does Not Log Trace Calls", func() {
@@ -116,7 +116,7 @@ var _ = Describe("LevelLogger", func() {
 
 	Context("With WARN Log Level", func() {
 		BeforeEach(func() {
-			level = level_log.WARN
+			level = log_level.WARN
 		})
 
 		It("Does Not Log Trace Calls", func() {
@@ -147,7 +147,7 @@ var _ = Describe("LevelLogger", func() {
 
 	Context("With ERROR Log Level", func() {
 		BeforeEach(func() {
-			level = level_log.ERROR
+			level = log_level.ERROR
 		})
 
 		It("Does Not Log Trace Calls", func() {

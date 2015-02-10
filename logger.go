@@ -1,15 +1,4 @@
-// Package level_log provides leveled logging.
 package log_level
-
-type Level int
-
-const (
-	TRACE Level = iota
-	DEBUG Level = iota
-	INFO  Level = iota
-	WARN  Level = iota
-	ERROR Level = iota
-)
 
 // A Logger represents a logging object that will filter logging
 // messages based on its internal log level and print filtered

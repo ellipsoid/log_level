@@ -1,3 +1,4 @@
+// Package level_log provides leveled logging.
 package log_level
 
 // A Logger represents a logging object that will filter logging
@@ -24,7 +25,8 @@ func New(level Level, logger printer) Logger {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Trace(format string, v ...interface{}) {
 	if l.level <= TRACE {
-		l.logger.Printf(format, v...)
+    prefixFormat := "[TRACE] " + format
+		l.logger.Printf(prefixFormat, v...)
 	}
 	return
 }
@@ -34,7 +36,8 @@ func (l Logger) Trace(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Debug(format string, v ...interface{}) {
 	if l.level <= DEBUG {
-		l.logger.Printf(format, v...)
+    prefixFormat := "[DEBUG] " + format
+		l.logger.Printf(prefixFormat, v...)
 	}
 	return
 }
@@ -44,7 +47,8 @@ func (l Logger) Debug(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Info(format string, v ...interface{}) {
 	if l.level <= INFO {
-		l.logger.Printf(format, v...)
+    prefixFormat := "[INFO] " + format
+		l.logger.Printf(prefixFormat, v...)
 	}
 	return
 }
@@ -54,7 +58,8 @@ func (l Logger) Info(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Warn(format string, v ...interface{}) {
 	if l.level <= WARN {
-		l.logger.Printf(format, v...)
+    prefixFormat := "[WARN] " + format
+		l.logger.Printf(prefixFormat, v...)
 	}
 	return
 }
@@ -64,7 +69,8 @@ func (l Logger) Warn(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Error(format string, v ...interface{}) {
 	if l.level <= ERROR {
-		l.logger.Printf(format, v...)
+    prefixFormat := "[ERROR] " + format
+		l.logger.Printf(prefixFormat, v...)
 	}
 	return
 }

@@ -1,9 +1,9 @@
-// Package level_log provides leveled logging.
+// Package log_level provides leveled logging.
 package log_level
 
-// A Logger represents a logging object that will filter logging
-// messages based on its internal log level and print filtered
-// results to an object that meets the printer interface.
+// A Logger represents a logging object that will filter
+// messages based on its internal log level. It prints filtered
+// results to its logger object, which must satisfy the printer interface.
 type Logger struct {
 	level  Level
 	logger printer

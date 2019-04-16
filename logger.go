@@ -25,8 +25,7 @@ func New(level Level, logger printer) Logger {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Trace(format string, v ...interface{}) {
 	if l.level <= TRACE {
-		prefixFormat := "[TRACE] " + format
-		l.logger.Printf(prefixFormat, v...)
+                l.printMessage("[TRACE] ", format)
 	}
 	return
 }
@@ -36,8 +35,7 @@ func (l Logger) Trace(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Debug(format string, v ...interface{}) {
 	if l.level <= DEBUG {
-		prefixFormat := "[DEBUG] " + format
-		l.logger.Printf(prefixFormat, v...)
+                l.printMessage("[DEBUG] ", format)
 	}
 	return
 }
@@ -47,8 +45,7 @@ func (l Logger) Debug(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Info(format string, v ...interface{}) {
 	if l.level <= INFO {
-		prefixFormat := "[INFO] " + format
-		l.logger.Printf(prefixFormat, v...)
+                l.printMessage("[INFO] ", format)
 	}
 	return
 }
@@ -58,8 +55,7 @@ func (l Logger) Info(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Warn(format string, v ...interface{}) {
 	if l.level <= WARN {
-		prefixFormat := "[WARN] " + format
-		l.logger.Printf(prefixFormat, v...)
+                l.printMessage("[WARN] ", format)
 	}
 	return
 }
@@ -69,8 +65,13 @@ func (l Logger) Warn(format string, v ...interface{}) {
 // Arguments are handled in the manner of fmt.Printf.
 func (l Logger) Error(format string, v ...interface{}) {
 	if l.level <= ERROR {
-		prefixFormat := "[ERROR] " + format
-		l.logger.Printf(prefixFormat, v...)
+                l.printMessage("[ERROR] ", format)
 	}
+	return
+}
+
+func (l Logger) printMessage(prefix string, format string, v ...interface{}) {
+        prefixFormat := prefix + format + "\n"
+        l.logger.Printf(prefixFormat, v...)
 	return
 }
